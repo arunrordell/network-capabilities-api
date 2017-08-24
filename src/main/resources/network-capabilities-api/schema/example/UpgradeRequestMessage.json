@@ -1,0 +1,27 @@
+{
+  "messageProperties": {
+    "timestamp": "2010-01-01T12:00:00Z",
+    "correlationId": "90015098-3cd2-3fb0-9696-3f7d28e17f72",
+    "replyTo": "rcm-fitness-client-parent.rcm-fitnetss-client"
+  },
+  "commandBody": {
+    "CommandType": "UpdateFirmware",
+    "CommandParameters": [
+      {
+        "key": "serverFilePath",
+        "value": "/home/vce/fireware/BIOS_PFWCY_WN64.EXE"
+      },
+      {
+        "key": "subComponentType",
+        "value": "BIOS"
+      },
+      {
+        "key": "EmulatedWorkflow",
+        "value": "on"
+      }
+    ]
+  },
+  "componentBody": {
+    "componentUuid": "10015098-3cdf-3fb0-96d6-3f7e28e17f73"    
+  }
+}

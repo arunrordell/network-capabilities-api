@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright © 2017 Dell Inc. or its subsidiaries.  All Rights Reserved  -->
+<assembly>
+    <id>schemas</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <fileSets>
+        <fileSet>
+            <outputDirectory>network-capabilities-api/schema/json</outputDirectory>
+            <directory>src/main/resources/network-capabilities-api/schema/json</directory>
+        </fileSet>
+        <fileSet>
+            <outputDirectory>network-capabilities-api</outputDirectory>
+            <directory>${project.basedir}/../..</directory>
+            <includes>
+                  <include>LICENSE.md</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>
