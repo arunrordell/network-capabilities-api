@@ -1,3 +1,4 @@
+/*
 UPSTREAM_TRIGGERS = getUpstreamTriggers([
     "common-client-parent",
     "common-dependencies",
@@ -6,6 +7,7 @@ UPSTREAM_TRIGGERS = getUpstreamTriggers([
     "hdp-capability-registry-client",
     "identity-service-api"
 ])
+*/
 
 MAVEN_PHASE = "install"
 if (env.BRANCH_NAME ==~ /master|develop|release\/.*/) {
@@ -18,9 +20,11 @@ pipeline {
         string(name: 'dockerRegistry',  defaultValue: 'docker-dev-local.art.local')
         string(name: 'dockerImageTag',  defaultValue: '${BRANCH_NAME}.${BUILD_NUMBER}')
     }
+    /*
     triggers {
         upstream(upstreamProjects: UPSTREAM_TRIGGERS, threshold: hudson.model.Result.SUCCESS)
     }
+    */
     agent {
         node {
             label 'maven-builder'
