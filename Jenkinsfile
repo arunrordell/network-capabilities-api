@@ -1,3 +1,4 @@
+
 UPSTREAM_TRIGGERS = getUpstreamTriggers([
     "common-dependencies",
     "common-messaging-parent"
