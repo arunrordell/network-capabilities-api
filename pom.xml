@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright © 2017 Dell Inc. or its subsidiaries.  All Rights Reserved  -->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <artifactId>root-parent</artifactId>
+        <groupId>com.dell.cpsd</groupId>
+        <version>1.0.1</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>network-capabilities-api</artifactId>
+    <groupId>com.dell.cpsd</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <licenses>
+        <license>
+            <name>Eclipse Public License - v 1.0</name>
+            <url>http://www.eclipse.org/legal/epl-v10.html</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Xuebin He</name>
+            <email>xuebin.he@dell.com</email>
+            <organization>com.dell.dojo</organization>
+            <organizationUrl>https://github.com/kaleo211</organizationUrl>
+        </developer>
+        <developer>
+            <name>Desmond Collins</name>
+            <email>desmond.collins@dell.com</email>
+            <organization>com.dell.cpsd</organization>
+            <organizationUrl>https://github.com/giddyelysium</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/dellemc-symphony/network-capabilities-api.git</connection>
+        <developerConnection>scm:git:git://github.com/dellemc-symphony/network-capabilities-api.git</developerConnection>
+        <url>https://github.com/dellemc-symphony/network-capabilities-api/tree/master</url>
+    </scm>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.dell.cpsd</groupId>
+                <artifactId>common-dependencies</artifactId>
+                <version>1.2.0</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.dell.cpsd</groupId>
+            <artifactId>common-rabbitmq</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.everit.json</groupId>
+            <artifactId>org.everit.json.schema</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.dell.cpsd</groupId>
+            <artifactId>common-testing</artifactId>
+            <version>2.0.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>create-distribution</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>assembly/assembly.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jsonschema2pojo</groupId>
+                <artifactId>jsonschema2pojo-maven-plugin</artifactId>
+                <version>0.4.27</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.dell.cpsd</groupId>
+                        <artifactId>common-contract-enricher</artifactId>
+                        <version>2.0.0</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>generate-json-model-network-capabilities-api</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirectory>${project.basedir}/src/main/resources/network-capabilities-api/schema/json
+                            </sourceDirectory>
+                            <targetPackage>com.dell.cpsd</targetPackage>
+                            <outputDirectory>${project.build.directory}/generated-sources/network-capabilities-api</outputDirectory>
+                            <removeOldOutput>true</removeOldOutput>
+                            <useLongIntegers>true</useLongIntegers>
+                            <includeConstructors>true</includeConstructors>
+                            <serializable>true</serializable>
+                            <useCommonsLang3>true</useCommonsLang3>
+                            <customAnnotator>com.dell.cpsd.common.contract.enricher.plugins.jsonschema2pojo.MessageAnnotator
+                            </customAnnotator>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <executions>
+                    <execution>
+                        <id>default-compile</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>default-jar</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-maven-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven-failsafe-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven-gpg-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

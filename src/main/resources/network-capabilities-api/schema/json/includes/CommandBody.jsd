@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "title": "Command Body",
+  "description": "Command Body.",
+  "properties": {
+    "CommandType": {
+      "type": "string",
+      "title": "Command Type",
+      "description": "Command Type."
+    },
+    "CommandParameters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "key": {
+          "type": "string",
+          "title": "Command Parameter Key",
+          "description": "Command Parameter Key."
+        },
+        "value": {
+          "type": "string",
+          "title": "Command Parameter Value",
+          "description": "Command Parameter Value."
+        }
+      },
+      "title": "Commmand Parameters",
+      "description": "Command Parameters."
+    }
+  },
+  "required": [
+    "CommandType",
+    "CommandParameters"
+  ]
+}
