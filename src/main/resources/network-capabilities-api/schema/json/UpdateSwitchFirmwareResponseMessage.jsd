@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "_meta": {
+    "message": "cpsd.controlplane.hardware.update.switch.firmware.response",
+    "version": "1.0",
+    "stereotype": "RESPONSE"
+  },
+  "properties": {
+    "messageProperties": {
+      "$ref": "includes/MessageProperties.jsd"
+    },
+    "controlPlaneCommand": {
+      "type": "string",
+      "title": "Control plane command",
+      "description": "Control plane command."
+    },
+    "CommandParameters": {
+      "type": "array",
+      "title": "Command Parameters",
+      "description": "Command Parameters",
+      "items": {
+        "$ref": "includes/CommandParameter.jsd"
+        }
+    }
+  },
+  "required": [
+    "messageProperties",
+    "controlPlaneCommand"
+  ]
+}

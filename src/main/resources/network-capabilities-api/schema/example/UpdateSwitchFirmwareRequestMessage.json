@@ -5,15 +5,11 @@
     "replyTo": "rcm-fitness-client-parent.rcm-fitnetss-client"
   },
   "commandBody": {
-    "CommandType": "UpdateFirmware",
+    "CommandType": "UpdateSwitchFirmware",
     "CommandParameters": [
       {
         "key": "serverFilePath",
-        "value": "/home/vce/fireware/BIOS_PFWCY_WN64.EXE"
-      },
-      {
-        "key": "subComponentType",
-        "value": "BIOS"
+        "value": "http://location/nx-7.0.1.I6.bin"
       },
       {
         "key": "EmulatedWorkflow",

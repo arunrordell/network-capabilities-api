@@ -3,7 +3,7 @@
   "type": "object",
   "additionalProperties": false,
   "_meta": {
-    "message": "com.dell.cpsd.service.rcm.capability.update.firmware.requested",
+    "message": "cpsd.controlplane.hardware.update.switch.firmware.request",
     "version": "1.0",
     "stereotype": "REQUEST"
   },
