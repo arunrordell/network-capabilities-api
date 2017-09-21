@@ -11,21 +11,11 @@
     },
     "CommandParameters": {
       "type": "array",
+      "title": "Command Parameters",
+      "description": "Command Parameters",
       "items": {
-        "type": "object",
-        "key": {
-          "type": "string",
-          "title": "Command Parameter Key",
-          "description": "Command Parameter Key."
-        },
-        "value": {
-          "type": "string",
-          "title": "Command Parameter Value",
-          "description": "Command Parameter Value."
-        }
-      },
-      "title": "Commmand Parameters",
-      "description": "Command Parameters."
+        "$ref": "CommandParameter.jsd"
+      }
     }
   },
   "required": [

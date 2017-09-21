@@ -1,0 +1,22 @@
+{
+  "messageProperties": {
+    "timestamp": "2010-01-01T12:00:00Z",
+    "correlationId": "90015098-3cd2-3fb0-9696-3f7d28e17f72",
+    "replyTo": "rcm-fitness-client-parent.rcm-fitnetss-client"
+  },
+  "controlPlaneCommand": "Status",
+  "CommandParameters": [
+    {
+      "key": "status",
+      "value": "succeeded"
+    },
+    {
+      "key": "name",
+      "value": "Cisco Nexus Update Firmware Graph"
+    },
+    {
+      "key": "InstanceID",
+      "value": "b7740d6d-f433-4e9a-badd-18a6a2a8cdd5"
+    }
+  ]
+}
